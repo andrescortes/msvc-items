@@ -1,0 +1,8 @@
+services:
+  items:
+    container_name: items
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "9001:9001"
