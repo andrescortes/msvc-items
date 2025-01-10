@@ -1,7 +1,24 @@
 server:
   servlet:
     context-path: /api/v1
-  port: 9001
+  port: 9002
 spring:
   application:
     name: msvc-items
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            msvc-products:
+              - uri: ${PRODUCTS_APP_URI:http://localhost:9000/api/v1/products}
+              - uri: ${PRODUCTS_APP_URI_2:http://localhost:9001/api/v1/products}
+
+
+
+
+app:
+  feign:
+    products:
+      name: msvc-products
+      url: http://localhost:9000/api/v1/products
